@@ -12,6 +12,13 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// Middleware Function
+const logging = (req, res, next) => {
+  console.log(new Date().toLocaleString() + `requested At: ${req.originalUrl}`);
+  next();
+};
+
+app.use(logging);
 app.get("/", (req, res) => {
   res.send("Hello from the hotel");
 });
