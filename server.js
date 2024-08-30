@@ -24,8 +24,8 @@ app.use(passport.initialize());
 const localAuthMiddleware = passport.authenticate("local", { session: false });
 app.use(logging);
 
-app.use("/person", localAuthMiddleware, personRoutes);
-app.use("/menuitem", localAuthMiddleware, menuRoutes);
+app.use("/person", personRoutes);
+app.use("/menuitem", menuRoutes);
 
 app.get("/", localAuthMiddleware, (req, res) => {
   res.send("Hello from the hotel");
